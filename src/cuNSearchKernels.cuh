@@ -1,7 +1,7 @@
 #pragma once
 #include <cuda_runtime.h>
-#include "Types.h"
-#include "GridInfo.h"
+#include "Types.cuh"
+#include "GridInfo.cuh"
 
 #define CUDA_MAX_NEIGHBORS 70
 #define CUDA_META_GRID_GROUP_SIZE 8

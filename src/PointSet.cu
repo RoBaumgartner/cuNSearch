@@ -1,6 +1,6 @@
 #include "PointSet.h"
-#include "PointSetImplementation.h"
-#include "cuda_helper.h"
+#include "PointSetImplementation.cuh"
+#include "cuda_helper.cuh"
 #include "NotImplementedException.h"
 
 namespace cuNSearch

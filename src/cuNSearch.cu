@@ -30,10 +30,10 @@
 #include "Timing.h"
 
 #include "NotImplementedException.h"
-#include "cuNSearchDeviceData.h"
-#include "PointSetImplementation.h"
+#include "cuNSearchDeviceData.cuh"
+#include "PointSetImplementation.cuh"
 #include "cuNSearchKernels.cuh"
-#include "cuda_helper.h"
+#include "cuda_helper.cuh"
 
 
 namespace cuNSearch
@@ -157,4 +157,3 @@ namespace cuNSearch
 		updatePointSet(pointSets[i]);
 	}
 }
-

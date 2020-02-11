@@ -1,7 +1,7 @@
 #include "cuNSearchKernels.cuh"
-#include "Types.h"
-#include "helper_mortonCode.h"
-#include "helper_linearIndex.h"
+#include "Types.cuh"
+#include "helper_mortonCode.cuh"
+#include "helper_linearIndex.cuh"
 
 #define INT16_RANGE 32767
 #define UPDATE_REF_OFFSET -32768

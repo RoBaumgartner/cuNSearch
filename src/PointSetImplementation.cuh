@@ -1,8 +1,8 @@
 #pragma once
-#include "Types.h"
-#include "GridInfo.h"
+#include "Types.cuh"
+#include "GridInfo.cuh"
 #include <thrust/device_vector.h>
-#include "cuda_helper.h"
+#include "cuda_helper.cuh"
 
 namespace cuNSearch
 {

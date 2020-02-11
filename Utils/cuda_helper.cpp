@@ -1,4 +1,4 @@
-#include "cuda_helper.h"
+#include "cuda_helper.cuh"
 #include <cuda_runtime.h>
 
 CUDAException::CUDAException(const char *_const_Message) : std::runtime_error(_const_Message)

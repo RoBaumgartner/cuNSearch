@@ -22,24 +22,28 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 SET(CMAKE_DEBUG_POSTFIX "_d")
 
+option(CUNSEARCH_INSTALL_CUH "Install .cuh headers as well as .h headers." OFF)
+
 set (INCLUDE_HEADERS
 	include/PointSet.h
 	include/ActivationTable.h
 	include/Common.h
 	include/cuNSearch.h
-	Utils/cuda_helper.h
+)
+
+set (CUH_INCLUDE_HEADERS
+	Utils/cuda_helper.cuh
+	src/GridInfo.cuh
+	src/PointSetImplementation.cuh
+	src/Types.cuh
 )
 
 set (HEADER_FILES
-	src/Types.h
-	src/cuNSearchDeviceData.h
-	src/GridInfo.h
+	src/cuNSearchDeviceData.cuh
 	src/NotImplementedException.h
-	src/PointSetImplementation.h
 	src/cuNSearchKernels.cuh
-	src/helper_linearIndex.h
-	src/helper_mortonCode.h
-	Utils/cuda_helper.h
+	src/helper_linearIndex.cuh
+	src/helper_mortonCode.cuh
 	Utils/Timing.h
 	Utils/IDFactory.h
 )
@@ -55,7 +59,12 @@ set (SOURCE_FILES
 	Utils/IDFactory.cpp
 )
 
-add_library(cuNSearch STATIC ${INCLUDE_HEADERS} ${HEADER_FILES} ${SOURCE_FILES})
+add_library(cuNSearch STATIC
+	${INCLUDE_HEADERS}
+	${CUH_INCLUDE_HEADERS}
+	${HEADER_FILES}
+	${SOURCE_FILES}
+)
 
 target_include_directories(cuNSearch PUBLIC
 	"include"
@@ -67,6 +76,10 @@ target_compile_definitions(cuNSearch PUBLIC $<$<CONFIG:DEBUG>:DEBUG>)
 
 install(FILES ${INCLUDE_HEADERS}
 	DESTINATION include/)
+if (CUNSEARCH_INSTALL_CUH)
+	install(FILES ${CUH_INCLUDE_HEADERS}
+		DESTINATION include/)
+endif()
 
 install(TARGETS cuNSearch
 	RUNTIME DESTINATION bin
