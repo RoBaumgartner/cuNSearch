@@ -1,4 +1,4 @@
-#include "PointSetImplementation.h"
+#include "PointSetImplementation.cuh"
 #include "NotImplementedException.h"
 
 namespace cuNSearch
